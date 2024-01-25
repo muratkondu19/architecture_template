@@ -6,6 +6,7 @@ import 'package:architecture_template/features/daily_news/domain/usecases/get_ar
 import 'package:architecture_template/features/daily_news/domain/usecases/get_saved_article.dart';
 import 'package:architecture_template/features/daily_news/domain/usecases/remove_article.dart';
 import 'package:architecture_template/features/daily_news/domain/usecases/save_article.dart';
+import 'package:architecture_template/features/daily_news/presentation/bloc/article/local/local_article_bloc.dart';
 import 'package:architecture_template/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
@@ -35,4 +36,6 @@ Future<void> initializeDependencies() async {
 
   //Blocs
   sl.registerFactory<RemoteArticlesBloc>(() => RemoteArticlesBloc(sl()));
+
+  sl.registerFactory<LocalArticleBloc>(() => LocalArticleBloc(sl(), sl(), sl()));
 }
